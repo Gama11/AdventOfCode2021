@@ -1,0 +1,32 @@
+{
+	"day": {
+		"scope": "haxe",
+		"prefix": "day",
+		"body": [
+			"package days;",
+			"",
+			"class ${TM_FILENAME_BASE} {",
+			"\tstatic function parse(input:String) {",
+			"\t\treturn input;",
+			"\t}",
+			"",
+			"\tpublic static function solve(input:String):Int {",
+			"\t\tfinal parsed = parse(input);",
+			"\t\t$1",
+			"\t\treturn 0;",
+			"\t}",
+			"}",
+			""
+		],
+	},
+	"spec": {
+		"scope": "haxe",
+		"prefix": "spec",
+		"body": [
+			"function specDay$1() {",
+			"\t0 == Day$1.solve(data(\"day$1/example\"));",
+			"\t0 == Day$1.solve(data(\"day$1/input\"));",
+			"}"
+		]
+	}
+}

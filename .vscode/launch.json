@@ -1,0 +1,21 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Interpreter",
+			"type": "haxe-eval",
+			"request": "launch"
+		},
+		{
+			"name": "JavaScript",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}/export/test.js",
+			"preLaunchTask": "haxe: active configuration",
+			"sourceMaps": true,
+			"outFiles": [
+				"${workspaceRoot}/export/*.js"
+			]
+		}
+	]
+}

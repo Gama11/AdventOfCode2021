@@ -1,0 +1,24 @@
+-cp src
+-D eval-stack
+-main Tests
+-lib utest
+-lib polygonal-ds
+# --interp
+-debug
+--macro keep("haxe.Int64")
+-D only-current-day
+
+-js export/test.js
+-cmd node export/test.js
+-lib hxnodejs
+
+# --python export/test.py
+
+# -cpp export/cpp
+# -cmd export\cpp\Tests.exe
+
+# --jvm export/test.jar
+# -cmd java -jar export/test.jar
+
+# -hl export/test.hl
+# -cmd hl export/test.hl
