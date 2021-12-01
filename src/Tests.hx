@@ -15,7 +15,13 @@ class Tests implements ITest {
 	}
 
 	function specDay01() {
-		7 == Day01.countIncreases(data("day01/example"));
-		1692 == Day01.countIncreases(data("day01/input"));
+		final example = data("day01/example").splitToInt("\n");
+		final input = data("day01/input").splitToInt("\n");
+
+		7 == Day01.countIncreases(example);
+		1692 == Day01.countIncreases(input);
+
+		5 == Day01.countIncreasesWindowed(example);
+		1724 == Day01.countIncreasesWindowed(input);
 	}
 }
