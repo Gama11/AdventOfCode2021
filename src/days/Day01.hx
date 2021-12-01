@@ -3,31 +3,23 @@ package days;
 import haxe.ds.ReadOnlyArray;
 
 class Day01 {
-	public static function countIncreases(input:Array<Int>):Int {
-		var increases = 0;
-		slidingWindow(input, 2, function(window) {
-			if (window[1] > window[0]) {
-				increases++;
-			}
-		});
-		return increases;
+	public static function countIncreases(depths:Array<Int>):Int {
+		return windows(depths, 2).count(window -> window[1] > window[0]);
 	}
 
-	public static function countIncreasesWindowed(input:Array<Int>):Int {
-		final sums = [];
-		slidingWindow(input, 3, function(window) {
-			sums.push(window.sum());
-		});
-		return countIncreases(sums);
+	public static function countIncreasesWindowed(depths:Array<Int>):Int {
+		return countIncreases(windows(depths, 3).map(window -> window.sum()));
 	}
 
-	private static function slidingWindow(numbers:ReadOnlyArray<Int>, size:Int, f:(window:Array<Int>) -> Void) {
+	private static function windows(numbers:ReadOnlyArray<Int>, size:Int):Array<Array<Int>> {
+		final windows = [];
 		final window = [for (i in 0...size) numbers[i]];
 		for (i in size...numbers.length) {
-			f(window);
+			windows.push(window.copy());
 			window.shift();
 			window.push(numbers[i]);
 		}
-		f(window);
+		windows.push(window);
+		return windows;
 	}
 }
