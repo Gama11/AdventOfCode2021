@@ -15,7 +15,7 @@ class Tests implements ITest {
 	}
 
 	function specDay01() {
-		0 == Day01.solve(data("day01/example"));
-		0 == Day01.solve(data("day01/input"));
+		7 == Day01.countIncreases(data("day01/example"));
+		1692 == Day01.countIncreases(data("day01/input"));
 	}
 }

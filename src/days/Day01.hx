@@ -1,13 +1,16 @@
 package days;
 
 class Day01 {
-	static function parse(input:String) {
-		return input;
-	}
-
-	public static function solve(input:String):Int {
-		final parsed = parse(input);
-
-		return 0;
+	public static function countIncreases(input:String):Int {
+		var increases = 0;
+		final measurements = input.splitToInt("\n");
+		var prevDepth = measurements.shift();
+		for (depth in measurements) {
+			if (depth > prevDepth) {
+				increases++;
+			}
+			prevDepth = depth;
+		}
+		return increases;
 	}
 }
