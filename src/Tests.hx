@@ -24,4 +24,9 @@ class Tests implements ITest {
 		5 == Day01.countIncreasesWindowed(example);
 		1724 == Day01.countIncreasesWindowed(input);
 	}
+
+	function specDay02() {
+		150 == Day02.pilotSubmarine(data("day02/example"));
+		1427868 == Day02.pilotSubmarine(data("day02/input"));
+	}
 }
