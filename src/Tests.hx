@@ -28,5 +28,8 @@ class Tests implements ITest {
 	function specDay02() {
 		150 == Day02.pilotSubmarine(data("day02/example"));
 		1427868 == Day02.pilotSubmarine(data("day02/input"));
+
+		900 == Day02.pilotSubmarineCorrectly(data("day02/example"));
+		1568138742 == Day02.pilotSubmarineCorrectly(data("day02/input"));
 	}
 }
