@@ -36,5 +36,8 @@ class Tests implements ITest {
 	function specDay03() {
 		198 == Day03.calculatePowerConsumption(data("day03/example"));
 		3633500 == Day03.calculatePowerConsumption(data("day03/input"));
+
+		230 == Day03.calculateLifeSupportRating(data("day03/example"));
+		4550283 == Day03.calculateLifeSupportRating(data("day03/input"));
 	}
 }
