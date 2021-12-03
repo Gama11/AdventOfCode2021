@@ -32,4 +32,9 @@ class Tests implements ITest {
 		900 == Day02.pilotSubmarineCorrectly(data("day02/example"));
 		1568138742 == Day02.pilotSubmarineCorrectly(data("day02/input"));
 	}
+
+	function specDay03() {
+		198 == Day03.calculatePowerConsumption(data("day03/example"));
+		3633500 == Day03.calculatePowerConsumption(data("day03/input"));
+	}
 }
