@@ -11,7 +11,7 @@ class Day01 {
 		return countIncreases(windows(depths, 3).map(window -> window.sum()));
 	}
 
-	private static function windows(numbers:ReadOnlyArray<Int>, size:Int):Array<Array<Int>> {
+	static function windows(numbers:ReadOnlyArray<Int>, size:Int):Array<Array<Int>> {
 		final windows = [];
 		final window = [for (i in 0...size) numbers[i]];
 		for (i in size...numbers.length) {

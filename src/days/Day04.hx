@@ -11,10 +11,12 @@ class Day04 {
 		return {numbers: numbers, boards: boards};
 	}
 
-	public static function solve(input:String):Int {
+	static function simulateBingo(input:String):Array<Int> {
 		final parsed = parse(input);
+		var boards = parsed.boards;
+		final scores = [];
 		for (calledNumber in parsed.numbers) {
-			for (board in parsed.boards) {
+			boards = boards.filter(function(board) {
 				for (cell in board.map) {
 					if (cell.value == calledNumber) {
 						cell.marked = true;
@@ -33,10 +35,19 @@ class Day04 {
 				final hasWinningLine = line(true).concat(line(false)).exists(line -> line.foreach(cell -> cell.marked));
 				if (hasWinningLine) {
 					final unmarkedSum = board.map.array().filter(cell -> !cell.marked).map(cell -> cell.value).sum();
-					return unmarkedSum * calledNumber;
+					scores.push(unmarkedSum * calledNumber);
 				}
-			}
+				return !hasWinningLine;
+			});
 		}
-		throw "no winners";
+		return scores;
+	}
+
+	public static function findFirstWinner(input:String):Int {
+		return simulateBingo(input)[0];
+	}
+
+	public static function findLastWinner(input:String):Int {
+		return simulateBingo(input).last();
 	}
 }

@@ -1,7 +1,7 @@
 package days;
 
 class Day03 {
-	private static function mostCommonBitness(numbers:Array<Bits>, index:Int):Int {
+	static function mostCommonBitness(numbers:Array<Bits>, index:Int):Int {
 		return if (numbers.count(bits -> bits.isSet(index)) >= numbers.length / 2) 1 else 0;
 	}
 

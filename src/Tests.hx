@@ -42,7 +42,10 @@ class Tests implements ITest {
 	}
 
 	function specDay04() {
-		4512 == Day04.solve(data("day04/example"));
-		49686 == Day04.solve(data("day04/input"));
+		4512 == Day04.findFirstWinner(data("day04/example"));
+		49686 == Day04.findFirstWinner(data("day04/input"));
+
+		1924 == Day04.findLastWinner(data("day04/example"));
+		26878 == Day04.findLastWinner(data("day04/input"));
 	}
 }

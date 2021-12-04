@@ -1,7 +1,7 @@
 package days;
 
 class Day02 {
-	private static function parse(input:String):Array<Instruction> {
+	static function parse(input:String):Array<Instruction> {
 		return input.split("\n").map(function(line):Instruction {
 			final parts = line.split(" ");
 			return {type: cast parts[0], amount: Std.parseInt(parts[1])};
