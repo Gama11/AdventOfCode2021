@@ -25,7 +25,7 @@ abstract Point(PointImpl) from PointImpl to Hashable {
 		return !equals(point);
 	}
 
-	public inline function invert():Point {
+	public inline function inverted():Point {
 		return new Point(-this.x, -this.y);
 	}
 }

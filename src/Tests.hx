@@ -40,4 +40,9 @@ class Tests implements ITest {
 		230 == Day03.calculateLifeSupportRating(data("day03/example"));
 		4550283 == Day03.calculateLifeSupportRating(data("day03/input"));
 	}
+
+	function specDay04() {
+		4512 == Day04.solve(data("day04/example"));
+		49686 == Day04.solve(data("day04/input"));
+	}
 }

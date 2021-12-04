@@ -54,8 +54,11 @@ class Util {
 		return renderPointGrid([for (p in map.keys()) p], p -> render(map[p]), empty);
 	}
 
-	public static function parseGrid<T>(input:String, convert:String->T):Grid<T> {
-		var grid = input.split("\n").map(line -> line.split(""));
+	public static function parseGrid<T>(input:String, convert:String->T, ?separator:EReg):Grid<T> {
+		if (separator == null) {
+			separator = ~/ /g;
+		}
+		var grid = input.split("\n").map(line -> separator.split(line.trim()));
 		var result = new HashMap<Point, T>();
 		for (y in 0...grid.length) {
 			for (x in 0...grid[y].length) {
