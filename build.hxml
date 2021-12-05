@@ -3,14 +3,14 @@
 -main Tests
 -lib utest
 -lib polygonal-ds
---interp
+# --interp
 -debug
 --macro keep("haxe.Int64")
 -D only-current-day
 
-# -js export/test.js
-# -cmd node export/test.js
-# -lib hxnodejs
+-js export/test.js
+-cmd node export/test.js
+-lib hxnodejs
 
 # --python export/test.py
 

@@ -143,4 +143,8 @@ class Extensions {
 		f(t);
 		return t;
 	}
+
+	public static inline function sign(n:Float):Int {
+		return if (n == 0) 0 else if (n < 0) -1 else 1;
+	}
 }

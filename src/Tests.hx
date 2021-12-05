@@ -48,4 +48,9 @@ class Tests implements ITest {
 		1924 == Day04.findLastWinner(data("day04/example"));
 		26878 == Day04.findLastWinner(data("day04/input"));
 	}
+
+	function specDay05() {
+		5 == Day05.countOverlappingPoints(data("day05/example"));
+		5169 == Day05.countOverlappingPoints(data("day05/input"));
+	}
 }
