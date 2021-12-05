@@ -50,7 +50,10 @@ class Tests implements ITest {
 	}
 
 	function specDay05() {
-		5 == Day05.countOverlappingPoints(data("day05/example"));
-		5169 == Day05.countOverlappingPoints(data("day05/input"));
+		5 == Day05.countOverlappingPoints(data("day05/example"), false);
+		5169 == Day05.countOverlappingPoints(data("day05/input"), false);
+
+		12 == Day05.countOverlappingPoints(data("day05/example"), true);
+		22083 == Day05.countOverlappingPoints(data("day05/input"), true);
 	}
 }
