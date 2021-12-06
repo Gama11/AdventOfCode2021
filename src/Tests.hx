@@ -56,4 +56,10 @@ class Tests implements ITest {
 		12 == Day05.countOverlappingPoints(data("day05/example"), true);
 		22083 == Day05.countOverlappingPoints(data("day05/input"), true);
 	}
+
+	function specDay06() {
+		26 == Day06.simulateFishPopulation(data("day06/example"), 18);
+		5934 == Day06.simulateFishPopulation(data("day06/example"), 80);
+		379414 == Day06.simulateFishPopulation(data("day06/input"), 80);
+	}
 }
