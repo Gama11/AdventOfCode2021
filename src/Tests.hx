@@ -2,6 +2,7 @@ import days.*;
 import sys.io.File;
 import utest.ITest;
 import utest.UTest;
+import haxe.Int64.parseString as int64;
 
 class Tests implements ITest {
 	static function main() {
@@ -61,5 +62,8 @@ class Tests implements ITest {
 		26 == Day06.simulateFishPopulation(data("day06/example"), 18);
 		5934 == Day06.simulateFishPopulation(data("day06/example"), 80);
 		379414 == Day06.simulateFishPopulation(data("day06/input"), 80);
+
+		int64("26984457539") == Day06.simulateFishPopulation(data("day06/example"), 256);
+		int64("1705008653296") == Day06.simulateFishPopulation(data("day06/input"), 256);
 	}
 }
