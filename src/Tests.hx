@@ -66,4 +66,12 @@ class Tests implements ITest {
 		int64("26984457539") == Day06.simulateFishPopulation(data("day06/example"), 256);
 		int64("1705008653296") == Day06.simulateFishPopulation(data("day06/input"), 256);
 	}
+
+	function specDay07() {
+		37 == Day07.findMinFuelCost(data("day07/example"), Day07.linear);
+		352331 == Day07.findMinFuelCost(data("day07/input"), Day07.linear);
+
+		168 == Day07.findMinFuelCost(data("day07/example"), Day07.increasing);
+		99266250 == Day07.findMinFuelCost(data("day07/input"), Day07.increasing);
+	}
 }
