@@ -78,5 +78,8 @@ class Tests implements ITest {
 	function specDay08() {
 		26 == Day08.countUniqueSegmentOutputs(data("day08/example"));
 		272 == Day08.countUniqueSegmentOutputs(data("day08/input"));
+
+		61229 == Day08.sumOutputs(data("day08/example"));
+		1007675 == Day08.sumOutputs(data("day08/input"));
 	}
 }
