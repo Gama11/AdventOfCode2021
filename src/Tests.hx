@@ -74,4 +74,9 @@ class Tests implements ITest {
 		168 == Day07.findMinFuelCost(data("day07/example"), Day07.increasing);
 		99266250 == Day07.findMinFuelCost(data("day07/input"), Day07.increasing);
 	}
+	
+	function specDay08() {
+		26 == Day08.countUniqueSegmentOutputs(data("day08/example"));
+		272 == Day08.countUniqueSegmentOutputs(data("day08/input"));
+	}
 }
