@@ -86,5 +86,8 @@ class Tests implements ITest {
 	function specDay09() {
 		15 == Day09.sumLowPointRiskLevels(data("day09/example"));
 		600 == Day09.sumLowPointRiskLevels(data("day09/input"));
+
+		15 == Day09.calculateBasinSizeProduct(data("day09/example"));
+		600 == Day09.calculateBasinSizeProduct(data("day09/input"));
 	}
 }
