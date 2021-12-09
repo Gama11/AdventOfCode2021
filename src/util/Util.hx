@@ -56,9 +56,9 @@ class Util {
 
 	public static function parseGrid<T>(input:String, convert:String->T, ?separator:EReg):Grid<T> {
 		if (separator == null) {
-			separator = ~/ /g;
+			separator = ~//g;
 		}
-		var grid = input.split("\n").map(line -> separator.split(line.trim()));
+		var grid = input.split("\n").map(line -> separator.split(line.trim()).filter(it -> it != ""));
 		var result = new HashMap<Point, T>();
 		for (y in 0...grid.length) {
 			for (x in 0...grid[y].length) {

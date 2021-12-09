@@ -82,4 +82,9 @@ class Tests implements ITest {
 		61229 == Day08.sumOutputs(data("day08/example"));
 		1007675 == Day08.sumOutputs(data("day08/input"));
 	}
+
+	function specDay09() {
+		15 == Day09.sumLowPointRiskLevels(data("day09/example"));
+		600 == Day09.sumLowPointRiskLevels(data("day09/input"));
+	}
 }
