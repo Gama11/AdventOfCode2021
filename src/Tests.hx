@@ -94,5 +94,8 @@ class Tests implements ITest {
 	function specDay10() {
 		26397 == Day10.calculateSyntaxErrorScore(data("day10/example"));
 		399153 == Day10.calculateSyntaxErrorScore(data("day10/input"));
+
+		288957 == Day10.findMiddleCompletionScore(data("day10/example"));
+		2995077699 == Day10.findMiddleCompletionScore(data("day10/input"));
 	}
 }
