@@ -87,7 +87,12 @@ class Tests implements ITest {
 		15 == Day09.sumLowPointRiskLevels(data("day09/example"));
 		600 == Day09.sumLowPointRiskLevels(data("day09/input"));
 
-		15 == Day09.calculateBasinSizeProduct(data("day09/example"));
-		600 == Day09.calculateBasinSizeProduct(data("day09/input"));
+		1134 == Day09.calculateBasinSizeProduct(data("day09/example"));
+		987840 == Day09.calculateBasinSizeProduct(data("day09/input"));
+	}
+
+	function specDay10() {
+		26397 == Day10.calculateSyntaxErrorScore(data("day10/example"));
+		399153 == Day10.calculateSyntaxErrorScore(data("day10/input"));
 	}
 }
