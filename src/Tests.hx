@@ -102,5 +102,8 @@ class Tests implements ITest {
 	function specDay11() {
 		1656 == Day11.countOctopusFlashes(data("day11/example"));
 		1661 == Day11.countOctopusFlashes(data("day11/input"));
+
+		195 == Day11.findFirstSyncrhonization(data("day11/example"));
+		334 == Day11.findFirstSyncrhonization(data("day11/input"));
 	}
 }
