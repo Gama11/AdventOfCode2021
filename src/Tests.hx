@@ -98,4 +98,9 @@ class Tests implements ITest {
 		288957 == Day10.findMiddleCompletionScore(data("day10/example"));
 		2995077699 == Day10.findMiddleCompletionScore(data("day10/input"));
 	}
+
+	function specDay11() {
+		1656 == Day11.countOctopusFlashes(data("day11/example"));
+		1661 == Day11.countOctopusFlashes(data("day11/input"));
+	}
 }
