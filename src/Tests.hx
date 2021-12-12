@@ -106,4 +106,11 @@ class Tests implements ITest {
 		195 == Day11.findFirstSyncrhonization(data("day11/example"));
 		334 == Day11.findFirstSyncrhonization(data("day11/input"));
 	}
+
+	function specDay12() {
+		10 == Day12.countPaths(data("day12/example1"));
+		19 == Day12.countPaths(data("day12/example2"));
+		226 == Day12.countPaths(data("day12/example3"));
+		4411 == Day12.countPaths(data("day12/input"));
+	}
 }
