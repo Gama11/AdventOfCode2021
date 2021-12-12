@@ -108,9 +108,14 @@ class Tests implements ITest {
 	}
 
 	function specDay12() {
-		10 == Day12.countPaths(data("day12/example1"));
-		19 == Day12.countPaths(data("day12/example2"));
-		226 == Day12.countPaths(data("day12/example3"));
-		4411 == Day12.countPaths(data("day12/input"));
+		10 == Day12.countPaths(data("day12/example1"), Day12.smallCavesOnce);
+		19 == Day12.countPaths(data("day12/example2"), Day12.smallCavesOnce);
+		226 == Day12.countPaths(data("day12/example3"), Day12.smallCavesOnce);
+		4411 == Day12.countPaths(data("day12/input"), Day12.smallCavesOnce);
+
+		36 == Day12.countPaths(data("day12/example1"), Day12.oneSmallCaveTwice);
+		103 == Day12.countPaths(data("day12/example2"), Day12.oneSmallCaveTwice);
+		3509 == Day12.countPaths(data("day12/example3"), Day12.oneSmallCaveTwice);
+		136767 == Day12.countPaths(data("day12/input"), Day12.oneSmallCaveTwice);
 	}
 }

@@ -91,7 +91,10 @@ class Extensions {
 		return true;
 	}
 
-	public static function filterDuplicates<T>(array:Array<T>, filter:(a:T, b:T) -> Bool):Array<T> {
+	public static function filterDuplicates<T>(array:Array<T>, ?filter:(a:T, b:T) -> Bool):Array<T> {
+		if (filter == null) {
+			filter = (a, b) -> a == b;
+		}
 		final unique:Array<T> = [];
 		for (element in array) {
 			var present = false;
