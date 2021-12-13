@@ -122,5 +122,8 @@ class Tests implements ITest {
 	function specDay13() {
 		17 == Day13.fold(data("day13/example"), true);
 		708 == Day13.fold(data("day13/input"), true);
+
+		16 == Day13.fold(data("day13/example"), false);
+		104 == Day13.fold(data("day13/input"), false);
 	}
 }

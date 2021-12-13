@@ -22,8 +22,8 @@ class Day13 {
 			final amount = regex.int(2);
 			return if (regex.matched(1) == "y") Horizontal(amount) else Vertical(amount);
 		});
-		final newPaper = new HashMap<Point, Bool>();
 		for (instruction in instructions) {
+			final newPaper = new HashMap<Point, Bool>();
 			for (point in paper.keys()) {
 				function mirror(coord:Int, line:Int) {
 					return coord - (coord - line) * 2;
