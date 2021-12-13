@@ -118,4 +118,9 @@ class Tests implements ITest {
 		3509 == Day12.countPaths(data("day12/example3"), Day12.oneSmallCaveTwice);
 		136767 == Day12.countPaths(data("day12/input"), Day12.oneSmallCaveTwice);
 	}
+
+	function specDay13() {
+		17 == Day13.fold(data("day13/example"), true);
+		708 == Day13.fold(data("day13/input"), true);
+	}
 }
