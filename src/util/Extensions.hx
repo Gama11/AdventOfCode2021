@@ -111,6 +111,15 @@ class Extensions {
 		return filterDuplicates(array, (e1, e2) -> e1 == e2);
 	}
 
+	public static function sorted<T>(array:Array<T>, ?sort:(T, T) -> Int):Array<T> {
+		if (sort == null) {
+			sort = Reflect.compare;
+		}
+		array = array.copy();
+		array.sort(sort);
+		return array;
+	}
+
 	public static function getOrDefault<K, V>(map:Map<K, V>, key:K, defaultValue:V):V {
 		final value = map[key];
 		return if (value == null) defaultValue else value;

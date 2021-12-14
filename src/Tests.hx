@@ -126,4 +126,9 @@ class Tests implements ITest {
 		16 == Day13.fold(data("day13/example"), false);
 		104 == Day13.fold(data("day13/input"), false);
 	}
+
+	function specDay14() {
+		1588 == Day14.solve(data("day14/example"));
+		3831 == Day14.solve(data("day14/input"));
+	}
 }
