@@ -128,7 +128,10 @@ class Tests implements ITest {
 	}
 
 	function specDay14() {
-		1588 == Day14.solve(data("day14/example"));
-		3831 == Day14.solve(data("day14/input"));
+		1588 == Day14.solve(data("day14/example"), 10);
+		3831 == Day14.solve(data("day14/input"), 10);
+
+		int64("2188189693529") == Day14.solve(data("day14/example"), 40);
+		int64("5725739914282") == Day14.solve(data("day14/input"), 40);
 	}
 }
