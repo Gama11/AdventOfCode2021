@@ -136,7 +136,10 @@ class Tests implements ITest {
 	}
 
 	function specDay15() {
-		40 == Day15.findLowestRiskPath(data("day15/example"));
-		435 == Day15.findLowestRiskPath(data("day15/input"));
+		40 == Day15.findLowestRiskPath(data("day15/example"), 1);
+		435 == Day15.findLowestRiskPath(data("day15/input"), 1);
+
+		315 == Day15.findLowestRiskPath(data("day15/example"), 5);
+		2842 == Day15.findLowestRiskPath(data("day15/input"), 5);
 	}
 }
