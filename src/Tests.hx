@@ -74,7 +74,7 @@ class Tests implements ITest {
 		168 == Day07.findMinFuelCost(data("day07/example"), Day07.increasing);
 		99266250 == Day07.findMinFuelCost(data("day07/input"), Day07.increasing);
 	}
-	
+
 	function specDay08() {
 		26 == Day08.countUniqueSegmentOutputs(data("day08/example"));
 		272 == Day08.countUniqueSegmentOutputs(data("day08/input"));
@@ -133,5 +133,10 @@ class Tests implements ITest {
 
 		int64("2188189693529") == Day14.solve(data("day14/example"), 40);
 		int64("5725739914282") == Day14.solve(data("day14/input"), 40);
+	}
+
+	function specDay15() {
+		40 == Day15.findLowestRiskPath(data("day15/example"));
+		435 == Day15.findLowestRiskPath(data("day15/input"));
 	}
 }

@@ -7,7 +7,7 @@ class AStar {
 	public static function search<T:State>(starts:Array<T>, isGoal:T->Bool, score:T->Int, getMoves:T->Array<Move<T>>):Null<Result<T>> {
 		var scores = new Map<String, Score>();
 		for (start in starts) {
-			scores[start.hashCode()] = {
+			scores[start.hash()] = {
 				g: 0,
 				f: score(start)
 			};
@@ -17,9 +17,9 @@ class AStar {
 
 		while (openSet.size > 0) {
 			var current = openSet.dequeue().item;
-			closedSet[current.hashCode()] = true;
+			closedSet[current.hash()] = true;
 
-			var currentScore = scores[current.hashCode()].g;
+			var currentScore = scores[current.hash()].g;
 			if (isGoal(current)) {
 				return {
 					score: currentScore,
@@ -28,17 +28,17 @@ class AStar {
 			}
 
 			for (move in getMoves(current)) {
-				if (closedSet.exists(move.state.hashCode())) {
+				if (closedSet.exists(move.state.hash())) {
 					continue;
 				}
-				var node = scores[move.state.hashCode()];
+				var node = scores[move.state.hash()];
 				var scoreAfterMove = currentScore + move.cost;
 				if (node == null || node.g > scoreAfterMove) {
 					var score = {
 						g: scoreAfterMove,
 						f: scoreAfterMove + score(move.state)
 					};
-					scores[move.state.hashCode()] = score;
+					scores[move.state.hash()] = score;
 					openSet.enqueue(new PrioritizedItem(move.state, score.f));
 				}
 			}
@@ -54,7 +54,7 @@ typedef Move<T> = {
 }
 
 typedef State = {
-	function hashCode():String;
+	function hash():String;
 }
 
 typedef Result<T> = {

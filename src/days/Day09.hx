@@ -3,7 +3,7 @@ package days;
 class Day09 {
 	static function findLowPoints(grid:HashMap<Point, Int>):Array<Point> {
 		return grid.keys().array().filter(function(pos) {
-			return Direction.horizontals.foreach(dir -> grid.getOrDefault(pos + dir, 10) > grid[pos]);
+			return Direction.horizontals.foreach(dir -> grid.getOrDefault(pos + dir, 10) > grid.getOrDefault(pos, 0));
 		});
 	}
 

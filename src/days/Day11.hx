@@ -7,9 +7,9 @@ class Day11 {
 			if (flashed.exists(pos)) {
 				return;
 			}
-			grid[pos]++;
+			grid[pos] = grid.getOrDefault(pos, 0) + 1;
 
-			if (grid[pos] > 9) {
+			if (grid.getOrDefault(pos, 0) > 9) {
 				grid[pos] = 0;
 				flashed[pos] = true;
 				for (dir in Direction.all) {

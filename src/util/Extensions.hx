@@ -1,5 +1,7 @@
 package util;
 
+import haxe.ds.ReadOnlyArray;
+
 class Extensions {
 	public static function int(reg:EReg, n:Int):Null<Int> {
 		return Std.parseInt(reg.matched(n));
@@ -125,7 +127,7 @@ class Extensions {
 		return if (value == null) defaultValue else value;
 	}
 
-	public static inline function last<T>(array:Array<T>):T {
+	public static inline function last<T>(array:ReadOnlyArray<T>):T {
 		return array[array.length - 1];
 	}
 

@@ -20,5 +20,8 @@
 # --jvm export/test.jar
 # -cmd java -jar export/test.jar
 
+# --java export/java
+# -cmd java -jar export/java/Tests-Debug.jar
+
 # -hl export/test.hl
 # -cmd hl export/test.hl
