@@ -142,4 +142,15 @@ class Tests implements ITest {
 		315 == Day15.findLowestRiskPath(data("day15/example"), 5);
 		2842 == Day15.findLowestRiskPath(data("day15/input"), 5);
 	}
+
+	function specDay16() {
+		6 == Day16.sumVersions("D2FE28");
+		9 == Day16.sumVersions("38006F45291200");
+		14 == Day16.sumVersions("EE00D40C823060");
+		16 == Day16.sumVersions("8A004A801A8002F478");
+		12 == Day16.sumVersions("620080001611562C8802118E34");
+		23 == Day16.sumVersions("C0015000016115A2E0802F182340");
+		31 == Day16.sumVersions("A0016C880162017C3686B18A3D4780");
+		984 == Day16.sumVersions(data("day16/input"));
+	}
 }

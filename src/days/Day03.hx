@@ -9,7 +9,7 @@ class Day03 {
 		final numbers = input.split("\n").map(Bits.parse);
 		final gammaRate = new Bits([for (i in 0...numbers[0].length) mostCommonBitness(numbers, i)]);
 		final epsilonRate = gammaRate.inverted();
-		return gammaRate.toNumber() * epsilonRate.toNumber();
+		return gammaRate.toInt() * epsilonRate.toInt();
 	}
 
 	public static function calculateLifeSupportRating(input:String):Int {
@@ -26,31 +26,8 @@ class Day03 {
 			}
 			throw "never got down to one number";
 		}
-		final oxgenGeneratorRating = filter((a, b) -> a == b).toNumber();
-		final co2ScrubberRating = filter((a, b) -> a != b).toNumber();
+		final oxgenGeneratorRating = filter((a, b) -> a == b).toInt();
+		final co2ScrubberRating = filter((a, b) -> a != b).toInt();
 		return oxgenGeneratorRating * co2ScrubberRating;
 	}
-}
-
-@:forward(length)
-private abstract Bits(Array<Int>) {
-	public static function parse(s:String)
-		return new Bits(s.split("").map(Std.parseInt));
-
-	public function new(bits:Array<Int>)
-		this = bits;
-
-	public function toNumber()
-		return this.foldi(function(bit, result, index) {
-			return result + bit * Std.int(Math.pow(2, this.length - 1 - index));
-		}, 0);
-
-	public function isSet(i:Int)
-		return this[i] == 1;
-
-	public function inverted():Bits
-		return new Bits(this.map(bit -> if (bit == 1) 0 else 1));
-
-	@:arrayAccess function get(i:Int):Int
-		return this[i];
 }
