@@ -2,16 +2,24 @@ package days;
 
 typedef Packet = {
 	final version:Int;
+	final typeId:PacketTypeId;
 	final type:PacketType;
 }
 
 enum abstract PacketTypeId(Int) from Int {
+	final Sum = 0;
+	final Product = 1;
+	final Minimum = 2;
+	final Maximum = 3;
 	final Literal = 4;
+	final GreaterThan = 5;
+	final LessThan = 6;
+	final EqualTo = 7;
 }
 
 enum PacketType {
-	Literal(number:Int);
-	Operator(children:Array<Packet>);
+	Literal(number:Int64);
+	Operator(subpackets:Array<Packet>);
 }
 
 enum abstract GroupPrefix(Int) from Int {
@@ -66,7 +74,7 @@ class Day16 {
 						prefix = read(1).toInt();
 						number = number.concat(read(4));
 					} while (prefix == KeepReading);
-					Literal(number.toInt());
+					Literal(number.toInt64());
 
 				case _:
 					final typeLengthId:LengthTypeId = read(1).toInt();
@@ -84,6 +92,7 @@ class Day16 {
 			return {
 				version: version,
 				type: type,
+				typeId: typeId,
 			};
 		}
 		return readPacket();
@@ -93,9 +102,37 @@ class Day16 {
 		function sum(packet:Packet):Int {
 			return packet.version + switch packet.type {
 				case Literal(_): 0;
-				case Operator(children): children.map(sum).sum();
+				case Operator(subpackets): subpackets.map(sum).sum();
 			}
 		}
 		return sum(readPacket(input));
+	}
+
+	public static function eval(input:String):Int64 {
+		function eval(packet:Packet):Int64 {
+			return switch packet.type {
+				case Literal(number): number;
+				case Operator(subpackets):
+					final s = subpackets.map(eval);
+					function bool(cond:(Int64, Int64) -> Bool) {
+						if (s.length != 2) {
+							throw 'boolean operation with ${s.length} subpackets';
+						}
+						return if (cond(s[0], s[1])) 1 else 0;
+					}
+					switch packet.typeId {
+						case Sum: s.sum();
+						case Product: s.product();
+						case Minimum: s.min64(i -> i).value;
+						case Maximum: s.max64(i -> i).value;
+						case GreaterThan: bool((a, b) -> a > b);
+						case LessThan: bool((a, b) -> a < b);
+						case EqualTo: bool((a, b) -> a == b);
+
+						case Literal: throw "unreachable";
+					}
+			}
+		}
+		return eval(readPacket(input));
 	}
 }

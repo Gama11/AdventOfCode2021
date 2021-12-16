@@ -9,9 +9,14 @@ abstract Bits(Array<Int>) {
 	public function new(bits:Array<Int>)
 		this = bits;
 
-	public function toInt()
+	public function toInt():Int
 		return this.foldi(function(bit, result, index) {
 			return result + bit * Std.int(Math.pow(2, this.length - 1 - index));
+		}, 0);
+
+	public function toInt64():Int64
+		return this.foldi(function(bit, result, index) {
+			return result + bit * Int64.fromFloat(Math.pow(2, this.length - 1 - index));
 		}, 0);
 
 	public function isSet(i:Int)

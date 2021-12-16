@@ -152,5 +152,15 @@ class Tests implements ITest {
 		23 == Day16.sumVersions("C0015000016115A2E0802F182340");
 		31 == Day16.sumVersions("A0016C880162017C3686B18A3D4780");
 		984 == Day16.sumVersions(data("day16/input"));
+
+		3 == Day16.eval("C200B40A82");
+		54 == Day16.eval("04005AC33890");
+		7 == Day16.eval("880086C3E88112");
+		9 == Day16.eval("CE00C43D881120");
+		1 == Day16.eval("D8005AC2A8F0");
+		0 == Day16.eval("F600BC2D8F");
+		0 == Day16.eval("9C005AC2F8F0");
+		1 == Day16.eval("9C0141080250320F1802104A08");
+		int64("1015320896946") == Day16.eval(data("day16/input"));
 	}
 }
