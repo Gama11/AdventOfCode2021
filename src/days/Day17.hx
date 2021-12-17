@@ -1,7 +1,7 @@
 package days;
 
 class Day17 {
-	public static function findHighestYPosition(input:String):Int {
+	public static function testProbeShots(input:String) {
 		final regex = ~/target area: x=(-?\d+)\.\.(-?\d+), y=(-?\d+)\.\.(-?\d+)/;
 		regex.match(input);
 		final minX = regex.int(1);
@@ -26,14 +26,18 @@ class Day17 {
 			}
 		}
 		var maxY = 0;
-		for (x in 0...100) {
-			for (y in -100...100) {
+		var hitCount = 0;
+		for (x in 0...400) {
+			for (y in -300...300) {
 				final probeMaxY = shootProbe(new Point(x, y));
-				if (probeMaxY > maxY) {
-					maxY = probeMaxY;
+				if (probeMaxY != null) {
+					hitCount++;
+					if (probeMaxY > maxY) {
+						maxY = probeMaxY;
+					}
 				}
 			}
 		}
-		return maxY;
+		return {maxY: maxY, hitCount: hitCount};
 	}
 }

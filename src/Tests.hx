@@ -165,7 +165,12 @@ class Tests implements ITest {
 	}
 
 	function specDay17() {
-		45 == Day17.findHighestYPosition("target area: x=20..30, y=-10..-5");
-		2701 == Day17.findHighestYPosition("target area: x=281..311, y=-74..-54");
+		final example = Day17.testProbeShots("target area: x=20..30, y=-10..-5");
+		45 == example.maxY;
+		112 == example.hitCount;
+
+		final input = Day17.testProbeShots("target area: x=281..311, y=-74..-54");
+		2701 == input.maxY;
+		1070 == input.hitCount;
 	}
 }
