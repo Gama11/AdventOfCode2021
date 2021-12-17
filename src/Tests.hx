@@ -163,4 +163,9 @@ class Tests implements ITest {
 		1 == Day16.eval("9C0141080250320F1802104A08");
 		int64("1015320896946") == Day16.eval(data("day16/input"));
 	}
+
+	function specDay17() {
+		45 == Day17.findHighestYPosition("target area: x=20..30, y=-10..-5");
+		2701 == Day17.findHighestYPosition("target area: x=281..311, y=-74..-54");
+	}
 }
