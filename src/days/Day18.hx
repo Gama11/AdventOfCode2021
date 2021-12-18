@@ -36,6 +36,10 @@ class Day18 {
 		return parse();
 	}
 
+	public static function parseList(input:String):Array<Number> {
+		return input.split("\n").map(parse);
+	}
+
 	public static function print(number:Number) {
 		return switch number {
 			case Pair(left, right): "[" + print(left) + "," + print(right) + "]";
@@ -140,12 +144,22 @@ class Day18 {
 		}
 	}
 
-	public static function sum(input:String) {
-		final numbers = input.split("\n").map(parse);
+	public static function add(a:Number, b:Number) {
+		return reduce(Pair(a, b));
+	}
+
+	public static function sum(numbers:Array<Number>) {
 		var sum = numbers[0];
 		for (i in 1...numbers.length) {
-			sum = reduce(Pair(sum, numbers[i]));
+			sum = add(sum, numbers[i]);
 		}
 		return sum;
+	}
+
+	public static function findLargestSumMagnitude(input:String) {
+		final numbers = parseList(input);
+		var combinations = numbers.tuples();
+		combinations = combinations.concat(combinations.map(c -> {a: c.b, b: c.a}));
+		return combinations.max(c -> magnitude(add(c.a, c.b))).value;
 	}
 }

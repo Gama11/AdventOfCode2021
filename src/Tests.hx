@@ -185,7 +185,7 @@ class Tests implements ITest {
 		"[[3,[2,[8,0]]],[9,[5,[7,0]]]]" == explode("[[3,[2,[8,0]]],[9,[5,[4,[3,2]]]]]");
 
 		function sum(input:String) {
-			return Day18.print(Day18.sum(input));
+			return Day18.print(Day18.sum(Day18.parseList(input)));
 		}
 		"[[[[0,7],4],[[7,8],[6,0]]],[8,1]]" == sum(data("day18/example0"));
 		"[[[[1,1],[2,2]],[3,3]],[4,4]]" == sum(data("day18/example1"));
@@ -205,5 +205,8 @@ class Tests implements ITest {
 
 		4140 == magnitude(sum(data("day18/example5")));
 		3494 == magnitude(sum(data("day18/input")));
+
+		3993 == Day18.findLargestSumMagnitude(data("day18/example5"));
+		4712 == Day18.findLargestSumMagnitude(data("day18/input"));
 	}
 }
