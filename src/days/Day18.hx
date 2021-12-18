@@ -26,7 +26,11 @@ class Day18 {
 					Pair(left, right);
 
 				case number:
-					Regular(Std.parseInt(number));
+					final value = Std.parseInt(number);
+					if (value == null) {
+						throw "expected a number but got " + number;
+					}
+					Regular(value);
 			}
 		}
 		return parse();
@@ -40,12 +44,16 @@ class Day18 {
 	}
 
 	public static function explode(number:Number) {
-		var alreadyExploded = false;
+		var explosions = 0;
 		function explode(number:Number, depth = 0) {
 			return switch number {
-				case Pair(Regular(left), Regular(right)) if (depth == 4 && !alreadyExploded):
-					alreadyExploded = true;
-					{number: Regular(0), explosion: {left: left, right: right}};
+				case Pair(Regular(left), Regular(right)) if (depth == 4):
+					explosions++;
+					if (explosions == 1) {
+						{number: Regular(0), explosion: {left: left, right: right}};
+					} else {
+						{number: number, explosion: null};
+					}
 
 				case Pair(left, right):
 					final leftResult = explode(left, depth + 1);
@@ -78,20 +86,66 @@ class Day18 {
 					}
 					{number: Pair(leftNumber, rightNumber), explosion: explosion};
 
-				case Regular(value):
-					{number: Regular(value), explosion: null};
+				case Regular(_):
+					{number: number, explosion: null};
 			}
 		}
-		return explode(number).number;
+		return {number: explode(number).number, done: explosions == 0};
 	}
 
-	public static function calculateSumMagnitude(input:String):Int {
+	static function split(number:Number) {
+		var splits = 0;
+		function split(number:Number) {
+			return switch number {
+				case Pair(left, right):
+					Pair(split(left), split(right));
+
+				case Regular(value):
+					if (value >= 10) {
+						splits++;
+						if (splits == 1) {
+							Pair(Regular(Math.floor(value / 2)), Regular(Math.ceil(value / 2)));
+						} else {
+							number;
+						}
+					} else {
+						number;
+					}
+			}
+		}
+		return {number: split(number), done: splits == 0};
+	}
+
+	public static function magnitude(number:Number) {
+		return switch number {
+			case Pair(left, right): 3 * magnitude(left) + 2 * magnitude(right);
+			case Regular(value): value;
+		}
+	}
+
+	public static function reduce(number:Number) {
+		final actions = [explode, split];
+		var index = 0;
+		while (true) {
+			final result = actions[index](number);
+			number = result.number;
+			if (result.done) {
+				index++;
+			} else {
+				index = 0;
+			}
+			if (index >= actions.length) {
+				return number;
+			}
+		}
+	}
+
+	public static function sum(input:String) {
 		final numbers = input.split("\n").map(parse);
 		var sum = numbers[0];
 		for (i in 1...numbers.length) {
-			sum = Pair(sum, numbers[i]);
-			break;
+			sum = reduce(Pair(sum, numbers[i]));
 		}
-		return 0;
+		return sum;
 	}
 }

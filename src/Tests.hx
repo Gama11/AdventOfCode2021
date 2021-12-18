@@ -176,7 +176,7 @@ class Tests implements ITest {
 
 	function specDay18() {
 		function explode(number:String) {
-			return Day18.print(Day18.explode(Day18.parse(number)));
+			return Day18.print(Day18.explode(Day18.parse(number)).number);
 		}
 		"[[[[0,9],2],3],4]" == explode("[[[[[9,8],1],2],3],4]");
 		"[7,[6,[5,[7,0]]]]" == explode("[7,[6,[5,[4,[3,2]]]]]");
@@ -184,6 +184,26 @@ class Tests implements ITest {
 		"[[3,[2,[8,0]]],[9,[5,[4,[3,2]]]]]" == explode("[[3,[2,[1,[7,3]]]],[6,[5,[4,[3,2]]]]]");
 		"[[3,[2,[8,0]]],[9,[5,[7,0]]]]" == explode("[[3,[2,[8,0]]],[9,[5,[4,[3,2]]]]]");
 
-		0 == Day18.calculateSumMagnitude(data("day18/example"));
+		function sum(input:String) {
+			return Day18.print(Day18.sum(input));
+		}
+		"[[[[0,7],4],[[7,8],[6,0]]],[8,1]]" == sum(data("day18/example0"));
+		"[[[[1,1],[2,2]],[3,3]],[4,4]]" == sum(data("day18/example1"));
+		"[[[[3,0],[5,3]],[4,4]],[5,5]]" == sum(data("day18/example2"));
+		"[[[[5,0],[7,4]],[5,5]],[6,6]]" == sum(data("day18/example3"));
+		"[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]" == sum(data("day18/example4"));
+
+		function magnitude(number:String) {
+			return Day18.magnitude(Day18.parse(number));
+		}
+		143 == magnitude("[[1,2],[[3,4],5]]");
+		1384 == magnitude("[[[[0,7],4],[[7,8],[6,0]]],[8,1]]");
+		445 == magnitude("[[[[1,1],[2,2]],[3,3]],[4,4]]");
+		791 == magnitude("[[[[3,0],[5,3]],[4,4]],[5,5]]");
+		1137 == magnitude("[[[[5,0],[7,4]],[5,5]],[6,6]]");
+		3488 == magnitude("[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]");
+
+		4140 == magnitude(sum(data("day18/example5")));
+		3494 == magnitude(sum(data("day18/input")));
 	}
 }
