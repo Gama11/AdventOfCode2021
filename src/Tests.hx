@@ -173,4 +173,17 @@ class Tests implements ITest {
 		2701 == input.maxY;
 		1070 == input.hitCount;
 	}
+
+	function specDay18() {
+		function explode(number:String) {
+			return Day18.print(Day18.explode(Day18.parse(number)));
+		}
+		"[[[[0,9],2],3],4]" == explode("[[[[[9,8],1],2],3],4]");
+		"[7,[6,[5,[7,0]]]]" == explode("[7,[6,[5,[4,[3,2]]]]]");
+		"[[6,[5,[7,0]]],3]" == explode("[[6,[5,[4,[3,2]]]],1]");
+		"[[3,[2,[8,0]]],[9,[5,[4,[3,2]]]]]" == explode("[[3,[2,[1,[7,3]]]],[6,[5,[4,[3,2]]]]]");
+		"[[3,[2,[8,0]]],[9,[5,[7,0]]]]" == explode("[[3,[2,[8,0]]],[9,[5,[4,[3,2]]]]]");
+
+		0 == Day18.calculateSumMagnitude(data("day18/example"));
+	}
 }
