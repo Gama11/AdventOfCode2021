@@ -211,7 +211,12 @@ class Tests implements ITest {
 	}
 
 	function specDay19() {
-		79 == Day19.countBeacons(data("day19/example"));
-		359 == Day19.countBeacons(data("day19/input"));
+		final example = Day19.analyzeReports(data("day19/example"));
+		79 == example.beaconCount;
+		3621 == example.maxScannerDistance;
+
+		final input = Day19.analyzeReports(data("day19/input"));
+		359 == input.beaconCount;
+		12292 == input.maxScannerDistance;
 	}
 }

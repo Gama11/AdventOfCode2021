@@ -42,6 +42,11 @@ abstract PointN(PointNImpl) from PointNImpl to Hashable {
 	@:arrayAccess inline function get(i:Int):Int {
 		return this.coordinates[i];
 	}
+
+	public function distanceTo(point:PointN) {
+		final result:PointNImpl = cast subtract(point);
+		return result.coordinates.map(i -> Std.int(Math.abs(i))).sum();
+	}
 }
 
 private class PointNImpl implements Hashable {
