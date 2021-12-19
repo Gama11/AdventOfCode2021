@@ -27,6 +27,10 @@ abstract PointN(PointNImpl) from PointNImpl to Hashable {
 		return new PointN([for (i in 0...this.dimensions) (this : PointN) [i] + point[i]]);
 	}
 
+	@:op(A - B) function subtract(point:PointN):PointN {
+		return new PointN([for (i in 0...this.dimensions) (this : PointN) [i] - point[i]]);
+	}
+
 	@:op(A == B) function equals(point:PointN):Bool {
 		return this.coordinates.equals((cast point : PointNImpl).coordinates);
 	}

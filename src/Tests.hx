@@ -209,4 +209,9 @@ class Tests implements ITest {
 		3993 == Day18.findLargestSumMagnitude(data("day18/example5"));
 		4712 == Day18.findLargestSumMagnitude(data("day18/input"));
 	}
+
+	function specDay19() {
+		79 == Day19.countBeacons(data("day19/example"));
+		359 == Day19.countBeacons(data("day19/input"));
+	}
 }
