@@ -223,5 +223,8 @@ class Tests implements ITest {
 	function specDay20() {
 		35 == Day20.countPixelsAfterEnhancements(data("day20/example"), 2);
 		5354 == Day20.countPixelsAfterEnhancements(data("day20/input"), 2);
+
+		3351 == Day20.countPixelsAfterEnhancements(data("day20/example"), 50);
+		18269 == Day20.countPixelsAfterEnhancements(data("day20/input"), 50);
 	}
 }
