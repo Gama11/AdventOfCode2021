@@ -219,4 +219,9 @@ class Tests implements ITest {
 		359 == input.beaconCount;
 		12292 == input.maxScannerDistance;
 	}
+
+	function specDay20() {
+		35 == Day20.countPixelsAfterEnhancements(data("day20/example"), 2);
+		5354 == Day20.countPixelsAfterEnhancements(data("day20/input"), 2);
+	}
 }
