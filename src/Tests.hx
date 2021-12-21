@@ -227,4 +227,9 @@ class Tests implements ITest {
 		3351 == Day20.countPixelsAfterEnhancements(data("day20/example"), 50);
 		18269 == Day20.countPixelsAfterEnhancements(data("day20/input"), 50);
 	}
+
+	function specDay21() {
+		739785 == Day21.playDiracDice(data("day21/example"));
+		605070 == Day21.playDiracDice(data("day21/input"));
+	}
 }
