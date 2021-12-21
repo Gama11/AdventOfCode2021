@@ -229,7 +229,10 @@ class Tests implements ITest {
 	}
 
 	function specDay21() {
-		739785 == Day21.playDiracDice(data("day21/example"));
-		605070 == Day21.playDiracDice(data("day21/input"));
+		739785 == Day21.playTrainingGame(data("day21/example"));
+		605070 == Day21.playTrainingGame(data("day21/input"));
+
+		int64("444356092776315") == Day21.playDiracDice(data("day21/example"));
+		int64("218433063958910") == Day21.playDiracDice(data("day21/input"));
 	}
 }
