@@ -30,6 +30,21 @@ abstract PointN(PointNImpl) from PointNImpl to Hashable {
 		return this.coordinates;
 	}
 
+	public var x(get, never):Int;
+
+	function get_x()
+		return get(0);
+
+	public var y(get, never):Int;
+
+	function get_y()
+		return get(1);
+
+	public var z(get, never):Int;
+
+	function get_z()
+		return get(2);
+
 	@:op(A + B) function add(point:PointN):PointN {
 		return new PointN([for (i in 0...this.dimensions) (this : PointN) [i] + point[i]]);
 	}

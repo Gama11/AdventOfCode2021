@@ -240,5 +240,9 @@ class Tests implements ITest {
 		39 == Day22.executeInitialization(data("day22/example1"));
 		590784 == Day22.executeInitialization(data("day22/example2"));
 		609563 == Day22.executeInitialization(data("day22/input"));
+
+		39 == Day22.executeReboot(data("day22/example1"));
+		int64("2758514936282235") == Day22.executeReboot(data("day22/example3"));
+		int64("1234650223944734") == Day22.executeReboot(data("day22/input"));
 	}
 }
