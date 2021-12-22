@@ -1,5 +1,6 @@
 package util;
 
+import haxe.ds.ReadOnlyArray;
 import polygonal.ds.Hashable;
 
 @:forward(dimensions)
@@ -21,6 +22,12 @@ abstract PointN(PointNImpl) from PointNImpl to Hashable {
 			return neighbors;
 		}
 		return recurse(dimensions).filter(a -> a.exists(i -> i != 0)).map(a -> new PointN(a));
+	}
+
+	public var coordinates(get, never):ReadOnlyArray<Int>;
+
+	function get_coordinates() {
+		return this.coordinates;
 	}
 
 	@:op(A + B) function add(point:PointN):PointN {

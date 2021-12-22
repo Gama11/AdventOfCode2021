@@ -235,4 +235,10 @@ class Tests implements ITest {
 		int64("444356092776315") == Day21.playDiracDice(data("day21/example"));
 		int64("218433063958910") == Day21.playDiracDice(data("day21/input"));
 	}
+
+	function specDay22() {
+		39 == Day22.executeInitialization(data("day22/example1"));
+		590784 == Day22.executeInitialization(data("day22/example2"));
+		609563 == Day22.executeInitialization(data("day22/input"));
+	}
 }
