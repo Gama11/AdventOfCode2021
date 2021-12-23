@@ -8,7 +8,7 @@ private enum abstract Amphipod(String) from String {
 }
 
 class Day23 {
-	public static function findMinimumEnergy(input:String):Int {
+	public static function findMinimumEnergy(input:String, unfolded:Bool):Int {
 		input = input.replace(" ", "#");
 		final burrow = Util.parseGrid(input, s -> s).map;
 		final amphipods = new HashMap<Point, Amphipod>();
@@ -17,11 +17,15 @@ class Day23 {
 				amphipods[pos] = tile;
 			}
 		}
+		final goalDepth = if (unfolded) 4 else 2;
+		function goalPoints(x:Int) {
+			return [for (offset in 0...goalDepth) new Point(x, 2 + offset)];
+		}
 		final goals = [
-			Amber => [new Point(3, 2), new Point(3, 3)],
-			Bronze => [new Point(5, 2), new Point(5, 3)],
-			Copper => [new Point(7, 2), new Point(7, 3)],
-			Desert => [new Point(9, 2), new Point(9, 3)],
+			Amber => goalPoints(3),
+			Bronze => goalPoints(5),
+			Copper => goalPoints(7),
+			Desert => goalPoints(9),
 		];
 		final hallwaySpots = [
 			new Point(1, 1),
@@ -61,12 +65,18 @@ class Day23 {
 					continue;
 				}
 				final goal = goals[amphipod];
-				final first = state.amphipods[goal[0]];
-				final second = state.amphipods[goal[1]];
-				if (first == null && second == amphipod) {
-					moves.push({from: spot, to: goal[0]});
-				} else if (first == null && second == null) {
-					moves.push({from: spot, to: goal[1]});
+				var lastValid = null;
+				for (pos in goal) {
+					final occupant = state.amphipods[pos];
+					if (occupant == null) {
+						lastValid = pos;
+					} else if (occupant != amphipod) {
+						lastValid = null;
+						break;
+					}
+				}
+				if (lastValid != null) {
+					moves.push({from: spot, to: lastValid});
 				}
 			}
 			moves = moves.filter(function(move) {

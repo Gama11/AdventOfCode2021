@@ -247,7 +247,7 @@ class Tests implements ITest {
 	} */
 
 	function specDay23() {
-		12521 == Day23.findMinimumEnergy(data("day23/example"));
-		18051 == Day23.findMinimumEnergy(data("day23/input"));
+		12521 == Day23.findMinimumEnergy(data("day23/example"), false);
+		18051 == Day23.findMinimumEnergy(data("day23/input"), false);
 	}
 }
