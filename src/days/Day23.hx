@@ -13,6 +13,12 @@ class Day23 {
 	public static function findMinimumEnergy(input:String):Int {
 		input = input.replace(" ", "#");
 		final burrow = Util.parseGrid(input, s -> (s : Tile)).map;
+		final amphipods = new HashMap<Point, Tile>();
+		for (pos => tile in burrow) {
+			if (tile != Empty && tile != Wall) {
+				amphipods[pos] = tile; 
+			}
+		}
 		final goals = [
 			Amber => [new Point(3, 2), new Point(3, 3)],
 			Bronze => [new Point(5, 2), new Point(5, 3)],
@@ -28,11 +34,8 @@ class Day23 {
 			new Point(10, 1),
 			new Point(11, 1),
 		];
-		return AStar.search([new SearchState(burrow)], function(state) {
-			for (pos => tile in state.burrow) {
-				if (tile == Empty || tile == Wall) {
-					continue;
-				}
+		return AStar.search([new SearchState(amphipods)], function(state) {
+			for (pos => tile in state.amphipods) {
 				if (!goals[tile].exists(goal -> pos == goal)) {
 					return false;
 				}
@@ -42,7 +45,7 @@ class Day23 {
 			var moves = [];
 			final movables = [
 				for (positions in goals) {
-					final pos = positions.find(pos -> state.burrow[pos] != Empty);
+					final pos = positions.find(pos -> state.amphipods.exists(pos));
 					if (pos == null) {
 						continue;
 					}
@@ -55,16 +58,16 @@ class Day23 {
 				}
 			}
 			for (spot in hallwaySpots) {
-				final tile = state.burrow[spot];
-				if (tile == Empty) {
+				final amphipod = state.amphipods[spot];
+				if (amphipod == null) {
 					continue;
 				}
-				final goal = goals[tile];
-				final first = state.burrow[goal[0]];
-				final second = state.burrow[goal[1]];
-				if (first == Empty && second == tile) {
+				final goal = goals[amphipod];
+				final first = state.amphipods[goal[0]];
+				final second = state.amphipods[goal[1]];
+				if (first == null && second == amphipod) {
 					moves.push({from: spot, to: goal[0]});
-				} else if (first == Empty && second == Empty) {
+				} else if (first == null && second == null) {
 					moves.push({from: spot, to: goal[1]});
 				}
 			}
@@ -81,16 +84,16 @@ class Day23 {
 						Direction.Down;
 					}
 					current += next;
-					if (state.burrow[current] != Empty) {
+					if (state.amphipods.exists(current)) {
 						return false;
 					}
 				}
 				return true;
 			});
 			return moves.map(function(move) {
-				final newBurrow = state.burrow.copy();
+				final newBurrow = state.amphipods.copy();
 				final amphipod = newBurrow[move.from];
-				newBurrow[move.from] = Empty;
+				newBurrow.remove(move.from);
 				newBurrow[move.to] = amphipod;
 				return {
 					state: new SearchState(newBurrow),
@@ -108,13 +111,13 @@ class Day23 {
 }
 
 private class SearchState {
-	public final burrow:HashMap<Point, Tile>;
+	public final amphipods:HashMap<Point, Tile>;
 
-	public function new(burrow) {
-		this.burrow = burrow;
+	public function new(amphipods) {
+		this.amphipods = amphipods;
 	}
 
 	public function hash():String {
-		return Util.renderPointHash(burrow, s -> s + "");
+		return Util.renderPointHash(amphipods, s -> s + "");
 	}
 }

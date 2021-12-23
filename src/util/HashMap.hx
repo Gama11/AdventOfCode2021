@@ -21,6 +21,10 @@ abstract HashMap<K:Hashable, V>(HashTable<K, V>) to Iterable<V> {
 		}
 	}
 
+	public function remove(key:K) {
+		this.unset(key);
+	}
+
 	public inline function exists(key:K):Bool {
 		return this.hasKey(key);
 	}
