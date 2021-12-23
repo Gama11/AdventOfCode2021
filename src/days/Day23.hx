@@ -9,6 +9,12 @@ private enum abstract Amphipod(String) from String {
 
 class Day23 {
 	public static function findMinimumEnergy(input:String, unfolded:Bool):Int {
+		if (unfolded) {
+			final lines = input.split("\n");
+			lines.insert(3, "  #D#B#A#C#");
+			lines.insert(3, "  #D#C#B#A#");
+			input = lines.join("\n");
+		}
 		input = input.replace(" ", "#");
 		final burrow = Util.parseGrid(input, s -> s).map;
 		final amphipods = new HashMap<Point, Amphipod>();

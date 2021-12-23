@@ -15,7 +15,7 @@ class Tests implements ITest {
 		return File.getContent('data/$name.txt').replace("\r", "");
 	}
 
-	/* function specDay01() {
+	function specDay01() {
 		final example = data("day01/example").splitToInt("\n");
 		final input = data("day01/input").splitToInt("\n");
 
@@ -244,10 +244,13 @@ class Tests implements ITest {
 		39 == Day22.executeReboot(data("day22/example1"));
 		int64("2758514936282235") == Day22.executeReboot(data("day22/example3"));
 		int64("1234650223944734") == Day22.executeReboot(data("day22/input"));
-	} */
+	}
 
 	function specDay23() {
 		12521 == Day23.findMinimumEnergy(data("day23/example"), false);
 		18051 == Day23.findMinimumEnergy(data("day23/input"), false);
+
+		44169 == Day23.findMinimumEnergy(data("day23/example"), true);
+		50245 == Day23.findMinimumEnergy(data("day23/input"), true);
 	}
 }
