@@ -1,8 +1,6 @@
 package days;
 
-private enum abstract Tile(String) from String {
-	final Wall = "#";
-	final Empty = ".";
+private enum abstract Amphipod(String) from String {
 	final Amber = "A";
 	final Bronze = "B";
 	final Copper = "C";
@@ -12,11 +10,11 @@ private enum abstract Tile(String) from String {
 class Day23 {
 	public static function findMinimumEnergy(input:String):Int {
 		input = input.replace(" ", "#");
-		final burrow = Util.parseGrid(input, s -> (s : Tile)).map;
-		final amphipods = new HashMap<Point, Tile>();
+		final burrow = Util.parseGrid(input, s -> s).map;
+		final amphipods = new HashMap<Point, Amphipod>();
 		for (pos => tile in burrow) {
-			if (tile != Empty && tile != Wall) {
-				amphipods[pos] = tile; 
+			if (tile == Amber || tile == Bronze || tile == Copper || tile == Desert) {
+				amphipods[pos] = tile;
 			}
 		}
 		final goals = [
@@ -91,18 +89,17 @@ class Day23 {
 				return true;
 			});
 			return moves.map(function(move) {
-				final newBurrow = state.amphipods.copy();
-				final amphipod = newBurrow[move.from];
-				newBurrow.remove(move.from);
-				newBurrow[move.to] = amphipod;
+				final newAmphipods = state.amphipods.copy();
+				final amphipod = newAmphipods[move.from];
+				newAmphipods.remove(move.from);
+				newAmphipods[move.to] = amphipod;
 				return {
-					state: new SearchState(newBurrow),
+					state: new SearchState(newAmphipods),
 					cost: (switch amphipod {
 						case Amber: 1;
 						case Bronze: 10;
 						case Copper: 100;
 						case Desert: 1000;
-						case _: throw "unreachable";
 					}) * move.from.distanceTo(move.to),
 				};
 			});
@@ -111,13 +108,18 @@ class Day23 {
 }
 
 private class SearchState {
-	public final amphipods:HashMap<Point, Tile>;
+	public final amphipods:HashMap<Point, Amphipod>;
+
+	var hashed:String;
 
 	public function new(amphipods) {
 		this.amphipods = amphipods;
 	}
 
 	public function hash():String {
-		return Util.renderPointHash(amphipods, s -> s + "");
+		if (hashed == null) {
+			hashed = Util.renderPointHash(amphipods, s -> s + "");
+		}
+		return hashed;
 	}
 }
