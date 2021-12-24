@@ -253,4 +253,10 @@ class Tests implements ITest {
 		44169 == Day23.findMinimumEnergy(data("day23/example"), true);
 		50245 == Day23.findMinimumEnergy(data("day23/input"), true);
 	}
+
+	function specDay24() {
+		final result = Day24.crackModelNumber();
+		"29991993698469" == result.largest;
+		"14691271141118" == result.smallest;
+	}
 }
