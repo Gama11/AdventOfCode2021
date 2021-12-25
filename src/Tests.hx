@@ -259,4 +259,9 @@ class Tests implements ITest {
 		"29991993698469" == result.largest;
 		"14691271141118" == result.smallest;
 	}
+
+	function specDay25() {
+		58 == Day25.solve(data("day25/example"));
+		300 == Day25.solve(data("day25/input"));
+	}
 }
